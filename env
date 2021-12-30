@@ -1,0 +1,128 @@
+source $TELENV
+
+alias  Pgdown zoom out
+alias  Pgup zoom in
+funckey Home zoom fit
+funckey e Slide
+funckey Del delete
+funckey b swap components
+
+funckey Esc cancel
+funckey m move
+funckey M move
+funckey q show Measure
+funckey r rotate
+funckey R rotate
+funckey t spin
+funckey . cns
+funckey w add connect
+funckey h Hilight
+funckey j Dehilight
+
+funckey [ angle 90
+funckey f mirror
+funckey d done
+funckey c copy
+funckey a oops
+funckey n next
+
+funckey Right ix 0.1
+funckey Left ix -0.1
+funckey Up iy 0.1
+funckey Down iy -0.1
+
+
+alias F10 grid toggle
+alias F11 zoom in
+alias F12 zoom out
+alias F2 zoom fit
+alias F3 add connect
+alias F4 show element
+alias F5 redraw
+alias F6 done
+alias F7 next
+alias F8 oops
+alias F9 cancel
+alias Home zoom fit
+alias Insert Define grid
+alias ~A auto_via
+alias ~B unrats net
+alias ~C smoothset
+alias ~D delete
+alias ~E vertex
+alias ~F fanout_bbvia
+alias ~G grid toggle
+alias ~H h_via_main
+alias ~J dhc
+alias ~K hc
+alias ~L align components
+alias ~M rats net
+alias ~N new
+alias ~O chg origin
+alias ~P pick
+alias ~R clear_RF
+alias ~S save
+alias ~T text edit
+alias ~W change
+alias ~Z undo
+alias ~Y redo
+
+
+
+funckey 1 Z1
+funckey 4 Z4
+funckey 2 Z2
+funckey 3 Z3
+funckey ~1 Z0
+funckey zz Z1 2 3 4 5 6
+funckey ZZ Z1 2 3 4 5 6
+
+
+funckey g changeshape
+funckey po 'settoggle no_etch_shape_display;redraw'
+
+
+
+
+### User Preferences section
+### This section is computer generated.
+### Please do not modify to the end of the file.
+### Place your hand edits above this section.
+###
+unset plot_vectext_width
+unset lp_abs_origin
+unset noplotmargins
+unset plot_shape_spacing
+unset plot_vectorize_text
+unset display_norefdes
+unset display_refdes_rats
+set display_nohilitefont
+unset highlight_shape_net
+set viewpath = E:/work/V13_AUDIO_V1.0/ D:/CADENCE/color/ C:/Cadence/color/ Z:/FTX/lib/0508/ F:/Cadence/Cadence/0508/
+set scriptpath = F:/Cadence/Cadence/SPB_Data/pcbenv/Vincent_skill/script/ . F:/Cadence/Cadence/Cadence_SPB_16.6/share/local/pcb/scripts F:/Cadence/Cadence/Cadence_SPB_16.6/share/pcb/text/script "F:/lib/allegro Library/script/"
+set undo_depth = 20
+unset no_etch_shape_display
+unset no_shape_fill_dyn_ood
+unset no_shape_fill
+set padpath = $padpath "F:/lib/allegro Library/padstack/"
+set psmpath = $psmpath F:/lib/CONNECT/ "F:/lib/allegro Library/mypcblib/" F:/lib/D/ F:/lib/IC/ F:/lib/RC/ F:/lib/OTHER/
+set allegro_etch_length_on
+set no_dragpopup
+set autosave_time = 10
+set autosave
+set autosave_name = a
+unset static_shapes_fill_solid
+set artwork_no_unit_warn
+unset display_nolinewidth
+unset display_nodynamicarcwidth
+set infinite_cursor_bug_nt
+set pcb_cursor = cross
+set nolast_file
+unset display_norepair
+unset display_noskeletal_draw
+set display_backingstore = on
+set noshow_current_selections
+set dcnets_delete_norat
+set logic_edit_enabled
+unset telskill
+set same_net_traps
