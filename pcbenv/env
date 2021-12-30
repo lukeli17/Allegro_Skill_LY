@@ -67,8 +67,6 @@ alias ~W change
 alias ~Z undo
 alias ~Y redo
 
-
-
 funckey 1 Z1
 funckey 4 Z4
 funckey 2 Z2
@@ -77,11 +75,8 @@ funckey ~1 Z0
 funckey zz Z1 2 3 4 5 6
 funckey ZZ Z1 2 3 4 5 6
 
-
 funckey g changeshape
 funckey po 'settoggle no_etch_shape_display;redraw'
-
-
 
 
 ### User Preferences section
@@ -98,14 +93,10 @@ unset display_norefdes
 unset display_refdes_rats
 set display_nohilitefont
 unset highlight_shape_net
-set viewpath = E:/work/V13_AUDIO_V1.0/ D:/CADENCE/color/ C:/Cadence/color/ Z:/FTX/lib/0508/ F:/Cadence/Cadence/0508/
-set scriptpath = F:/Cadence/Cadence/SPB_Data/pcbenv/Vincent_skill/script/ . F:/Cadence/Cadence/Cadence_SPB_16.6/share/local/pcb/scripts F:/Cadence/Cadence/Cadence_SPB_16.6/share/pcb/text/script "F:/lib/allegro Library/script/"
 set undo_depth = 20
 unset no_etch_shape_display
 unset no_shape_fill_dyn_ood
 unset no_shape_fill
-set padpath = $padpath "F:/lib/allegro Library/padstack/"
-set psmpath = $psmpath F:/lib/CONNECT/ "F:/lib/allegro Library/mypcblib/" F:/lib/D/ F:/lib/IC/ F:/lib/RC/ F:/lib/OTHER/
 set allegro_etch_length_on
 set no_dragpopup
 set autosave_time = 10
