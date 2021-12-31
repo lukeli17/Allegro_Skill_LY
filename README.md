@@ -1,4 +1,5 @@
 ## Allegro_Skill
+* [Allegro 相关资料](https://github.com/lukeli17/Allegro_Skill_ziliao)
 * 适用于Allegro 16.6版本
 * 菜单内容已汉化成中文
 * Skill收集于网络，已按习惯修改
