@@ -1,0 +1,3 @@
+将10个bmp文件
+
+存放至目录 cadence\SPB_16.6\share\local\pcb\icons
