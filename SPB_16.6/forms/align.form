@@ -1,0 +1,206 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+# skill axlFormTest("align.form")
+
+FORM toolwindow
+	FIXED
+	PORT 26 40
+	HEADER "Align & Distribute"
+	
+	POPUP <snap_point>"Origin""origin","Center""center","Pin""pin".
+	
+	TILE
+#--------- Common ---------------------------
+		GROUP "Horizontal"
+			FLOC 1 0
+			FSIZE 25 13
+		ENDGROUP
+		GROUP "Vertical"
+			FLOC 1 12
+			FSIZE 25 13
+		ENDGROUP
+		
+#--------- Align H ----------------------------	
+		FIELD align-top
+			THUMBNAIL align-top
+			OPTIONS stretch
+			FLOC 4 2
+			FSIZE 3 2
+		ENDFIELD
+		FIELD bnTop
+			FLOC 2 4
+			MENUBUTTON "Top" 7 3
+		ENDFIELD
+		
+		FIELD align-centerH
+			THUMBNAIL align-centerH
+			OPTIONS stretch
+			FLOC 12 2
+			FSIZE 3 2
+		ENDFIELD
+		FIELD bnCenterH
+			FLOC 10 4
+			MENUBUTTON "Center" 7 3
+		ENDFIELD
+		
+		FIELD align-bottom
+			THUMBNAIL align-bottom
+			OPTIONS stretch
+			FLOC 20 2
+			FSIZE 3 2
+		ENDFIELD
+		FIELD bnBottom
+			FLOC 18 4
+			MENUBUTTON "Bottom" 7 3
+		ENDFIELD
+		
+#---------    Pick H     -----------------------
+		FIELD bnPickH
+			FLOC 2 7
+			MENUBUTTON "Pick" 7 3
+		ENDFIELD
+		FIELD pickH
+			THUMBNAIL pickH
+			OPTIONS stretch
+			FLOC 9 7
+			FSIZE 3 2
+		ENDFIELD
+		
+		FIELD bxPickH
+			FLOC 14 7
+			CHECKLIST
+		ENDFIELD
+		FIELD fPickH
+			FLOC 17 7
+			REALFILLIN 7 10
+		ENDFIELD
+
+#--------- Distribute H -----------------------
+		FIELD bnDistributeH
+			FLOC 2 10
+			MENUBUTTON "Distrib" 7 3
+		ENDFIELD
+		FIELD distributeH
+			THUMBNAIL distributeH
+			OPTIONS stretch
+			FLOC 9 10
+			FSIZE 3 2
+		ENDFIELD
+		
+		FIELD bxStepH
+			FLOC 14 10
+			CHECKLIST
+		ENDFIELD
+		FIELD fStepH
+			FLOC 17 10
+			REALFILLIN 7 10
+		ENDFIELD
+
+#--------- Align V ----------------------------			
+		FIELD align-left
+			THUMBNAIL align-left
+			OPTIONS stretch
+			FLOC 4 14
+			FSIZE 3 2
+		ENDFIELD
+		FIELD bnLeft
+			FLOC 2 16
+			MENUBUTTON "Left" 7 3
+		ENDFIELD
+		
+		FIELD align-centerV
+			THUMBNAIL align-centerV
+			OPTIONS stretch
+			FLOC 12 14
+			FSIZE 3 2
+		ENDFIELD
+		FIELD bnCenterV
+			FLOC 10 16
+			MENUBUTTON "Center" 7 3
+		ENDFIELD
+		
+		FIELD align-right
+			THUMBNAIL align-right
+			OPTIONS stretch
+			FLOC 20 14
+			FSIZE 3 2
+		ENDFIELD
+		FIELD bnRight
+			FLOC 18 16
+			MENUBUTTON "Right" 7 3
+		ENDFIELD
+
+#---------    Pick V     -----------------------
+		FIELD bnPickV
+			FLOC 2 19
+			MENUBUTTON "Pick" 7 3
+		ENDFIELD
+		FIELD pickV
+			THUMBNAIL pickV
+			OPTIONS stretch
+			FLOC 9 19
+			FSIZE 3 2
+		ENDFIELD
+		
+		FIELD bxPickV
+			FLOC 14 19
+			CHECKLIST
+		ENDFIELD
+		FIELD fPickV
+			FLOC 17 19
+			REALFILLIN 7 10
+		ENDFIELD
+
+#--------- Distribute V -----------------------
+		FIELD bnDistributeV
+			FLOC 2 22
+			MENUBUTTON "Distrib" 7 3
+		ENDFIELD
+		FIELD distributeV
+			THUMBNAIL distributeV
+			OPTIONS stretch
+			FLOC 9 22
+			FSIZE 3 2
+		ENDFIELD
+		
+		FIELD bxStepV
+			FLOC 14 22
+			CHECKLIST
+		ENDFIELD
+		FIELD fStepV
+			FLOC 17 22
+			REALFILLIN 7 10
+		ENDFIELD
+
+#--------- Common ---------------------------
+		FIELD bxGap
+			FLOC 2 25
+			CHECKLIST "Gap"
+		ENDFIELD
+		
+		FIELD bxStretch
+			FLOC 2 27
+			CHECKLIST "Stretch etch"
+		ENDFIELD
+		FIELD bxRipup
+			FLOC 14 27
+			CHECKLIST "Ripup etch"
+		ENDFIELD
+		
+		FIELD bxSnapToGrid
+			FLOC 2 29
+			CHECKLIST "Grid snap"
+		ENDFIELD
+		FIELD cmbSnapPoint
+			FLOC 13 29
+			ENUMSET 6
+			POP "snap_point"
+		ENDFIELD
+		FIELD sPinNumber
+			FLOC 21 29
+			STRFILLIN 3 7
+		ENDFIELD
+		
+# skill axlFormTest("align.form")
+	ENDTILE
+ENDFORM
+ 
