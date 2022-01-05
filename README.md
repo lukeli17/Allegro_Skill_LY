@@ -3,6 +3,7 @@
 * 适用于Allegro 16.6版本
 * 菜单内容已汉化成中文
 * Skill收集于网络，已按习惯修改，部分含源码
+* 所有调用命令可在menu_LYSkill.il 内查看，有源码的skill直接打开skill也能看到命令
 ## 使用方法
 * 将allegro.ilinit、整个skill文件夹 拷贝至安装目录pcbenv文件夹
 * icons和forms文件夹 拷贝至Cadence\SPB_16.6\share\local\pcb中对应文件夹下
