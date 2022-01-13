@@ -166,19 +166,7 @@ axlCmdRegister( "heightchk" `heightchker)
 			axlShell("Done")				;stop symbol selection
 			axlFormSetField( height_chker_form1 "Pickit" 0)		;deselect pickit button - stops while loop
 		);end if
-		List=outfile("c:\\heightlisting.txt")	;create output file.
-		p=outfile("c:\\missingprops.txt")		;create output file.
-		fprintf(p, "Layout Name:  %s \nPath:  %s \nFile Created:  %s\n\n" axlCurrentDesign() axlGetVariable("cwd") getCurrentTime())
-		fprintf(p, "Refdes\tType\t\tSymbolName              Side\tXY\n\n")
-		
-		Calc()							;call Calc
-		close(p)							;close output file
-		close(List)
-	/* 	if( (Entries==1) then				;if there was an entry then display window
-			results=axlUIViewFileCreate("c:\\missingprops.txt" "Missing Shapes and Props" nil)	;close and display results.
-			axlUIWExpose(results)
-		);end if */
-		
+		Calc()							;call Calc		
 	)
 	
 	
@@ -215,26 +203,11 @@ axlCmdRegister( "heightchk" `heightchker)
 		axlVisibleUpdate(t)
 		   		
 		checkSideValue=3
-		p=outfile("c:\\missingprops.txt")			;create output file.
-		List=outfile("c:\\heightlisting.txt")		;create output file.
-		fprintf(List, "Component Height Listing (in %s)\n\n" car(axlDBGetDesignUnits()))
-		fprintf(List, "Layout Name:  %s \nPath:  %s \nList Created:  %s\n\n" axlCurrentDesign() axlGetVariable("cwd") getCurrentTime())
-		fprintf(List, "Refdes\t\tHeight\t\tSide\tSymbolName\n\n")
-		
-		fprintf(p, "Layout Name:  %s \nPath:  %s \nFile Created:  %s\n\n" axlCurrentDesign() axlGetVariable("cwd") getCurrentTime())
-		fprintf(p, "Refdes\tType\t\tSymbolName              Side\tXY\n\n")
-
 		Calc()								;call Calc
-		close(List)							;close output file
-		close(p)								;close output file
 		axlClearSelSet()
 		results2=axlUIViewFileCreate("c:\\heightlisting.txt" "Component Height Listing" nil)	;close and display results.
 		axlUIWExpose(results2)
 		makelisting=0
-		/* if( (Entries==1) then					;if there was an entry then display window
-					results=axlUIViewFileCreate("c:\\missingprops.txt" "Missing Shapes and Props" nil)	;close and display results.
-					axlUIWExpose(results)
-		);end if */
 	)
 	
 	
@@ -250,45 +223,13 @@ axlCmdRegister( "heightchk" `heightchker)
 		axlFormSetField( height_chker_form1 "BothSide" 1)
 		axlFormSetField( height_chker_form1 "TestNumber" "0")		   		
 		checkSideValue=3
-		p=outfile("c:\\missingprops.txt")			;create output file.
-		fprintf(p, "Layout Name:  %s \nPath:  %s \nFile Created:  %s\n\n" axlCurrentDesign() axlGetVariable("cwd") getCurrentTime())
-		fprintf(p, "Refdes\tType\t\tSymbolName              Side\tXY\n\n")
-
 		Calc()								;call Calc
-		close(p)								;close output file
 		axlClearSelSet()
 		if( (Entries==1) then					;if there was an entry then display window
 					results=axlUIViewFileCreate("c:\\missingprops.txt" "Missing Shapes and Props" nil)	;close and display results.
 					axlUIWExpose(results)
 		);end if
-		
 	)
-	;****************************************************************************************
-/* 
-(defun missingprops ()
-		Entries=0
-		if( (checkLimitValue==5) then 		;If the program was in pickit mode just before...
-			axlShell("Done")				;stop symbol selection
-		);end if
-		makelisting=0
-		checkLimitValue=1
-		axlFormSetField( height_chker_form1 "GreaterThan" 1)		;set buttons to select all comps
-		checkSideValue=3
-		axlFormSetField( height_chker_form1 "BothSide" 1)
-		axlFormSetField( height_chker_form1 "TestNumber" "0")		   		
-		checkSideValue=3
-		p=outfile("c:\\missingprops.txt")			;create output file.
-		fprintf(p, "Layout Name:  %s \nPath:  %s \nFile Created:  %s\n\n" axlCurrentDesign() axlGetVariable("cwd") getCurrentTime())
-		fprintf(p, "Refdes\tType\t\tSymbolName              Side\tXY\n\n")
-
-		Calc()								;call Calc
-		close(p)								;close output file
-		axlClearSelSet()
-		if( (Entries==1) then					;if there was an entry then display window
-					results=axlUIViewFileCreate("c:\\missingprops.txt" "Missing Shapes and Props" nil)	;close and display results.
-					axlUIWExpose(results)
-		);end if
-	) */
 
 
 
@@ -426,6 +367,46 @@ axlCmdRegister( "heightchk" `heightchker)
 
 (defun Calc ()
 
+	List=outfile("c:\\heightlisting.txt")	;create output file.
+	p=outfile("c:\\missingprops.txt")		;create output file.
+	;c:\\heightlisting.txt
+	fprintf(List, "<html>\n<head><title>Component Height Listing</title></head>\n")
+	fprintf(List, "<br>\n")
+	fprintf(List, "Component Height Listing <b>(in %s)</b><br>\n" car(axlDBGetDesignUnits()))
+	fprintf(List, "<br>\n")
+	fprintf(List, "<b><u>Design Name</u>:&nbsp;%s</b><br>\n" axlCurrentDesign())
+	fprintf(List, "<b><u>Path</u>:&nbsp;%s</b><br>\n" axlGetVariable("cwd"))
+	fprintf(List, "<b><u>File Created:</u>:&nbsp;%s</b><br>\n" getCurrentTime())
+	fprintf(List, "<br>\n")
+	fprintf(List, "<table align=center border=1><caption><b><u>Component Height Listing</u></b></caption>\n")
+	fprintf(List, "<tr>\n")
+	fprintf(List, "<td><b>Refdes</b></td>\n")
+	fprintf(List, "<td><b>Height</b></td>\n")
+	fprintf(List, "<td><b>Side</b></td>\n")
+	fprintf(List, "<td><b>SymbolName</b></td>\n")
+	fprintf(List, "</tr>\n")
+	fprintf(List, "\n")
+	;fprintf(List, "Component Height Listing (in %s)\n\n" car(axlDBGetDesignUnits()))
+	;fprintf(List, "Layout Name:  %s \nPath:  %s \nList Created:  %s\n\n" axlCurrentDesign() axlGetVariable("cwd") getCurrentTime())
+	;fprintf(List, "Refdes\t\tHeight\t\tSide\tSymbolName\n\n")
+	
+	;c:\\missingprops.txt
+	fprintf(p, "<html>\n<head><title>Missing Shapes and Props</title></head>\n")
+	fprintf(p, "<b><u>Design Name</u>:&nbsp;%s</b><br>\n" axlCurrentDesign())
+	fprintf(p, "<b><u>Path</u>:&nbsp;%s</b><br>\n" axlGetVariable("cwd"))
+	fprintf(p, "<b><u>File Created:</u>:&nbsp;%s</b><br>\n" getCurrentTime())
+	fprintf(p, "<br>\n")
+	fprintf(p, "<table align=center border=1><caption><b><u>Missing Shapes and Props</u></b></caption>\n")
+	fprintf(p, "<tr>\n")
+	fprintf(p, "<td><b>Refdes</b></td>\n")
+	fprintf(p, "<td><b>Side</b></td>\n")
+	fprintf(p, "<td><b>Type</b></td>\n")
+	fprintf(p, "<td><b>SymbolName</b></td>\n")
+	fprintf(p, "<td><b>XY</b></td>\n")
+	fprintf(p, "</tr>\n")
+	fprintf(p, "\n")
+	;fprintf(p, "Refdes\tType\t\tSymbolName              Side\tXY\n\n")
+	
 	getHeights()						;call getHeights
 	
 	highlight=0
@@ -584,24 +565,28 @@ axlCmdRegister( "heightchk" `heightchker)
 					if( (mir==t) then
 						side="Bottom"
 					else
-						side="Top   "
+						side="Top"
 					);end if
-					if(strlen(sym_refdes) >= 12	then
-						fprintf(List, "%s\t%n\t\t%s\t%s\n" sym_refdes Maxheightofsymbol side sym_db->name)
-					else
-					fprintf(List, "%s\t\t%n\t\t%s\t%s\n" sym_refdes Maxheightofsymbol side sym_db->name)
-					);end_if
+				; fprintf(p, "<tr>\n")
+				; fprintf(p, "<td><b>Refdes</b></td>\n")
+				; fprintf(p, "<td><b>Height</b></td>\n")
+				; fprintf(p, "<td><b>Side</b></td>\n")
+				; fprintf(p, "<td><b>SymbolName</b></td>\n")
+				; fprintf(p, "</tr>\n")
+				fprintf(List, "<tr>\n")
+				fprintf(List, "<td nowrap=true>%s</td>\n" sym_refdes)
+				fprintf(List, "<td nowrap=true>%.2n</td>\n" Maxheightofsymbol)
+				fprintf(List, "<td nowrap=true>%s</td>\n" side)
+				fprintf(List, "<td nowrap=true>%s</td>\n" sym_db->name)
+				fprintf(List, "</tr>\n")
+				;fprintf(List, "%s\t\t%n\t\t%s\t%s\n" sym_refdes Maxheightofsymbol side sym_db->name)
 				);end if
-		
 				highlight=0
-			
 			);end if
 			
 			message=sprintf(nil "%n Symbols Highlighted" count)
-			axlUIWPrint(height_chker_form1 message)
-			
+			axlUIWPrint(height_chker_form1 message)	
 		);end side 3
-		
 			
 		);end case checkSideValue
 	);end foreach
@@ -612,6 +597,10 @@ axlCmdRegister( "heightchk" `heightchker)
 		axlUIWPrint(height_chker_form1 message)
 	);end if
 	;makelisting=0
+	fprintf(List, "</table>\n")
+	fprintf(List, "</HTML>\n")
+	close(List)							;close output file
+	close(p)							;close output file
 );end defun Calc
 
 ;***************************************************************************************************
@@ -698,31 +687,59 @@ axlCmdRegister( "heightchk" `heightchker)
 				);end if
 					
 				if( (shapefound==0) then
-					;fprintf(p, "Refdes\txy\t\tSymbolName          Side\tType\n\n")
-					fprintf(p, "\n%s\t" refdes)
-					fprintf(p, "Place_bound\262\343\310\261\312\247!   ")	;没有Place_bound层
-					fprintf(p, "%-24s%s\t%L\n\n" symbol_db->name side symbol_db->xy )
+					/*
+					fprintf(p, "<tr>\n")
+					fprintf(p, "<td><b>Refdes</b></td>\n")
+					fprintf(p, "<td><b>Side</b></td>\n")
+					fprintf(p, "<td><b>Type</b></td>\n")
+					fprintf(p, "<td><b>SymbolName</b></td>\n")
+					fprintf(p, "<td><b>XY</b></td>\n")
+					fprintf(p, "</tr>\n")
+					*/
+					fprintf(p, "<tr>\n")
+					fprintf(p, "<td nowrap=true>%s</td>\n" refdes)
+					fprintf(p, "<td nowrap=true>%s</td>\n" side)
+					fprintf(p, "<td nowrap=true>\316\336Place_bound\262\343</td>\n");无Place_bound层
+					fprintf(p, "<td nowrap=true>%s</td>\n" symbol_db->name)
+					fprintf(p, "<td nowrap=true><a href=\"xprobe:xy: %L %L \">%L</a></td>\n" nth(0 symbol_db->xy) nth(1 symbol_db->xy) symbol_db->xy)
+					fprintf(p, "</tr>\n")
+					;fprintf(p, "%s\t" refdes)
+					;fprintf(p, "Place_bound\262\343\310\261\312\247   ")	;没有Place_bound层
+					;fprintf(p, "%-24s%s\t%L\n" symbol_db->name side symbol_db->xy )
 					Entries=1
 				);end if
 				if( (propfound==0) then
-					;fprintf(p, "Refdes\txy\t\tSymbolName          Side\tType\n\n")
-					fprintf(p, "%s\t" refdes)
-					fprintf(p, "Place_bound\316\336\270\337\266\310!   ")	;没有高度
-					fprintf(p, "%-24s%s\t%L\n" symbol_db->name side symbol_db->xy )
+					fprintf(p, "<tr>\n")
+					fprintf(p, "<td nowrap=true>%s</td>\n" refdes)
+					fprintf(p, "<td nowrap=true>%s</td>\n" side)
+					fprintf(p, "<td nowrap=true>\316\336\270\337\266\310</td>\n");无高度
+					fprintf(p, "<td nowrap=true>%s</td>\n" symbol_db->name)
+					fprintf(p, "<td nowrap=true><a href=\"xprobe:xy: %L %L \">%L</a></td>\n" nth(0 symbol_db->xy) nth(1 symbol_db->xy) symbol_db->xy)
+					fprintf(p, "</tr>\n")
+					;fprintf(p, "%s\t" refdes)
+					;fprintf(p, "\316\336\270\337\266\310   ")	;没有高度
+					;fprintf(p, "%-24s%s\t%L\n" symbol_db->name side symbol_db->xy )
 					Entries=1
 				);end if
 				if( (twoshapes==1) then
-					;fprintf(p, "Refdes\txy\t\tSymbolName          Side\tType\n\n")
-					fprintf(p, "\n%s\t" refdes)
-					fprintf(p, "Place_bound\323\320\301\275\262\343!   ")	;有两个Place_bound层
-					fprintf(p, "%-24s%s\t%L\n\n" symbol_db->name side symbol_db->xy )
+					fprintf(p, "<tr>\n")
+					fprintf(p, "<td nowrap=true>%s</td>\n" refdes)
+					fprintf(p, "<td nowrap=true>%s</td>\n" side)
+					fprintf(p, "<td nowrap=true>Place_bound\323\320\301\275\262\343</td>\n");有两个Place_bound层
+					fprintf(p, "<td nowrap=true>%s</td>\n" symbol_db->name)
+					fprintf(p, "<td nowrap=true><a href=\"xprobe:xy: %L %L \">%L</a></td>\n" nth(0 symbol_db->xy) nth(1 symbol_db->xy) symbol_db->xy)
+					fprintf(p, "</tr>\n")
+					;fprintf(p, "%s\t" refdes)
+					;fprintf(p, "Place_bound\323\320\301\275\262\343   ")	;有两个Place_bound层
+					;fprintf(p, "%-24s%s\t%L\n" symbol_db->name side symbol_db->xy )
 					Entries=1
 				);end if
 			
 		);end if refdes=nil
 		
 	) ; end of foreach symbol_db
-	
+	fprintf(p, "</table>\n")
+	fprintf(p, "</HTML>\n")
 	symlist2=sortcar(tableToList(symlist) 'alphalessp)
 	
 );end defun getHeights
