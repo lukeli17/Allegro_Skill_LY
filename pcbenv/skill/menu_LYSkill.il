@@ -1,8 +1,7 @@
-defun(loadLiyuanMenu (t_menuName)    						; loadUniNavMenu是函数名，建议取独一无二的名字。
+defun(loadLYMenu (t_menuName)    						; loadUniNavMenu是函数名，建议取独一无二的名字。
 	SKILLToolsMenu = '(
             (popup "\316\322\265\304\271\244\276\337")    	;主菜单的名字：我的工具
 			;("quick_view","quick_view")    		;前面一个"quick_view"是下一级子菜单名，后一个"quick_view"是我们调用skill所用的指令。以下相同不赘述  
-			;("Skill\326\330\324\330[\265\367\312\324\323\303]","skill_load")	;Skill重载(调试用)
 			("\266\324\306\353\271\244\276\337","al")						;对齐工具
 			("PIN\266\324\306\353","ali_pin")								;pin对齐
 			("\327\324\266\257\320\375\327\252\316\273\272\305[\320\375\327\252\307\260\317\310\261\243\264\346]","ch_ref")	;自动位号旋转
@@ -67,7 +66,7 @@ defun(loadLiyuanMenu (t_menuName)    						; loadUniNavMenu是函数名，建议
                 ;(end)  ;返回根菜单
 				*/
         )
-	procedure(loadLiyuanMenu(tMenuFile)
+	procedure(loadLYMenu(tMenuFile)
         let((xMenuID)
                 when(tMenuFile == "allegro" ;只判斷第一次載入及執行,如果沒有此判斷的話,有其他程式也是使用動態選單時,就會再加載一次
                         xMenuID = axlUIMenuFind(nil -1)
@@ -80,5 +79,5 @@ defun(loadLiyuanMenu (t_menuName)    						; loadUniNavMenu是函数名，建议
                 axlUIMenuInsert(palMenu SKILLToolsMenu)  
         )
 )
-axlTriggerSet('menu 'loadLiyuanMenu)  ;这里 loadUniNavMenu需要和上边函数名相同。
+axlTriggerSet('menu 'loadLYMenu)  ;这里 loadUniNavMenu需要和上边函数名相同。
 
