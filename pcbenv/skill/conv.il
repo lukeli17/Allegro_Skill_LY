@@ -128,7 +128,7 @@ close( convform)
 (case convform->curField
  
     ("Done"
-        axlFormClose(convform)
+        ;axlFormClose(convform)
 
 		; rm may be incompatible with some platforms
 		; ------------------------------------------
