@@ -13,4 +13,4 @@
 * 快捷键需按照个人习惯重新修改
 * 若本身有装其他skill，请谨慎覆盖allegro.ilinit文件
 ## 截图
-![1](./images/LYSkill_menu.png)
+![Skill菜单](./images/LYSkill_menu.png)
