@@ -82,7 +82,7 @@ axlCmdRegister( "heightchk" `heightchker)
    
    fprintf(height_chker_form1 "FIELD Pickit\n")	
    fprintf(height_chker_form1 "FLOC 2 24\n")
-   fprintf(height_chker_form1 "CHECKLIST \"\321\241\326\320\304\243\312\275\" \"tb\"\n");选中看高度模式
+   fprintf(height_chker_form1 "CHECKLIST \"\321\241\326\320\277\264\270\337\266\310\" \"tb\"\n");选中看高度模式
    fprintf(height_chker_form1 "ENDFIELD\n\n")
 ;
    fprintf(height_chker_form1 "FIELD TopSide\n")	
@@ -140,7 +140,7 @@ axlCmdRegister( "heightchk" `heightchker)
  
    fprintf(height_chker_form1 "FIELD Done\n")
    fprintf(height_chker_form1 "FLOC 15 24\n")
-   fprintf(height_chker_form1 "MENUBUTTON \"\315\352\263\311\" 8 3\n");完成
+   fprintf(height_chker_form1 "MENUBUTTON \"\315\352\263\311\" 9 3\n");完成
    fprintf(height_chker_form1 "ENDFIELD\n\n")
 ;#################################################### End of Display buttons
    fprintf(height_chker_form1 "ENDTILE\n")
